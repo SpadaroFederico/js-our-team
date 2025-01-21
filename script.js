@@ -37,22 +37,27 @@ const teamMembers = [
   }
 ];
 
-const ulTemp = document.getElementById('outputTemp'); // Use quotes for the ID
+const TeamList = document.querySelector('.teamContainer'); // Use quotes for the ID
 let items = ""; // Initialize the items variable
 
 for (let i = 0; i < teamMembers.length; i++) {
   const { name, role, img } = teamMembers[i]; // Use "img" instead of "image"
 
   items += `
-<li>
-    Nome: ${name} <br>
-    Ruolo: ${role} <br>
-    Nome file img: ${img} <br>
-</li>`;
+  <div class="teamCard">
+      <div class="cardImg">
+          <img src="img/${img}" alt="${name}" />
+      </div>
+  </div>
 
-console.log(items);
+  <div class="cardText">
+      <h3>${name}</h3>
+      <p>${role}</p>
+  </div>`;
+
+  console.log(items);
 
 }
 
 // output
-ulTemp.innerHTML = items;
+TeamList.innerHTML = items;
