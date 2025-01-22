@@ -37,27 +37,21 @@ const teamMembers = [
   }
 ];
 
-const TeamList = document.querySelector('.teamContainer'); // Use quotes for the ID
-let items = ""; // Initialize the items variable
+// Seleziono il contenitore
+const teamContainer = document.getElementById("team-container");
 
-for (let i = 0; i < teamMembers.length; i++) {
-  const { name, role, img } = teamMembers[i]; // Use "img" instead of "image"
-
-  items += `
-  <div class="teamCard">
-      <div class="cardImg">
-          <img src="img/${img}" alt="${name}" />
+// Genero le card
+teamMembers.forEach(function (member) {
+  const cardHTML = `
+    <div class="card">
+      <img src="${member.img}" alt="${member.name}">
+      <div>
+        <h5>${member.name.toUpperCase()}</h5>
+        <p>${member.role}</p>
+        <a href="mailto:${member.email}">${member.email}</a>
       </div>
-  </div>
+    </div>
+  `;
 
-  <div class="cardText">
-      <h3>${name}</h3>
-      <p>${role}</p>
-  </div>`;
-
-  console.log(items);
-
-}
-
-// output
-TeamList.innerHTML = items;
+  teamContainer.innerHTML += cardHTML;
+});
